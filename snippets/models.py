@@ -12,6 +12,9 @@ class SnippetHolder(models.Model):
     def snippets(self):
         return self.snippet_set.order_by('submitted')
 
+    def __str__(self):
+        return str(self.snippets.count())
+
 
 class Snippet(models.Model):
     holder = models.ForeignKey(SnippetHolder)
