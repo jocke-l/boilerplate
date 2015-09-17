@@ -24,3 +24,5 @@ class SnippetTestCase(TestCase):
             code="print('Changed!')",
         )
         self.assertEquals(holder.snippets[1], change)
+
+        self.assertEquals(holder.created, holder.snippets.first().submitted)
