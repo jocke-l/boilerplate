@@ -25,4 +25,10 @@ class SnippetTestCase(TestCase):
         )
         self.assertEquals(holder.snippets[1], change)
 
-        self.assertEquals(holder.created, holder.snippets.first().submitted)
+        self.assertEquals(holder.creator, self.user)
+
+        self.assertEquals(holder.contributors.get(), self.user)
+
+        self.assertEquals(holder.created, snippet.submitted)
+
+        self.assertEqual(str(holder), 'test')

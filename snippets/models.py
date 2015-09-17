@@ -5,15 +5,23 @@ from .managers import SnippetManager
 
 class SnippetHolder(models.Model):
     @property
-    def created(self):
-        return self.snippets.first().submitted
-
-    @property
     def snippets(self):
         return self.snippet_set.order_by('submitted')
 
+    @property
+    def creator(self):
+        return self.snippets.first().contributor
+
+    @property
+    def contributors(self):
+        return User.objects.filter(snippet__holder_id=self.id).distinct()
+
+    @property
+    def created(self):
+        return self.snippets.first().submitted
+
     def __str__(self):
-        return str(self.snippets.count())
+        return self.snippets.first().name
 
 
 class Snippet(models.Model):
