@@ -21,7 +21,7 @@ class SnippetTestCase(TestCase):
         change = Snippet.objects.create(
             holder=holder,
             contributor=self.user2,
-            name='test',
+            name='test2',
             description='test description',
             code="print('Changed!')",
         )
@@ -35,4 +35,6 @@ class SnippetTestCase(TestCase):
 
         self.assertEqual(holder.latest, change)
 
-        self.assertEqual(str(holder), 'test')
+        self.assertEqual(str(snippet), "test - print('Hello, world!')")
+
+        self.assertEqual(str(holder), 'test2')

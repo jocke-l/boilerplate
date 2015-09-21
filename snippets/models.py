@@ -25,7 +25,7 @@ class SnippetHolder(models.Model):
         return self.snippets.last()
 
     def __str__(self):
-        return self.snippets.first().name
+        return self.snippets.last().name
 
 
 class Snippet(models.Model):
