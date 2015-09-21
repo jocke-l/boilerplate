@@ -20,6 +20,10 @@ class SnippetHolder(models.Model):
     def created(self):
         return self.snippets.first().submitted
 
+    @property
+    def latest(self):
+        return self.snippets.last()
+
     def __str__(self):
         return self.snippets.first().name
 

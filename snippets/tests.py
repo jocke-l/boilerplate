@@ -33,4 +33,6 @@ class SnippetTestCase(TestCase):
 
         self.assertEquals(holder.created, snippet.submitted)
 
+        self.assertEqual(holder.latest, change)
+
         self.assertEqual(str(holder), 'test')
