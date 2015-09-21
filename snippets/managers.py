@@ -1,5 +1,9 @@
 from django.db.models import Manager
 
+__all__ = [
+    'SnippetManager'
+]
+
 
 class SnippetManager(Manager):
     def create_with_holder(self, *args, **kwargs):

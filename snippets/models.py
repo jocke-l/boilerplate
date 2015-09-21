@@ -2,6 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 from .managers import SnippetManager
 
+__all__ = [
+    'SnippetHolder',
+    'Snippet'
+]
+
 
 class SnippetHolder(models.Model):
     @property
