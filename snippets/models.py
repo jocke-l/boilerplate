@@ -30,7 +30,7 @@ class SnippetHolder(models.Model):
         return self.snippets.last()
 
     def __str__(self):
-        return self.snippets.last().name
+        return self.latest.name
 
 
 class Snippet(models.Model):
