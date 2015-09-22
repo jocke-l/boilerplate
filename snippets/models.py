@@ -32,6 +32,9 @@ class SnippetHolder(models.Model):
     def __str__(self):
         return self.latest.name
 
+    class Meta:
+        app_label = 'snippets'
+
 
 class Snippet(models.Model):
     holder = models.ForeignKey(SnippetHolder)
@@ -47,3 +50,6 @@ class Snippet(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        app_label = 'snippets'
