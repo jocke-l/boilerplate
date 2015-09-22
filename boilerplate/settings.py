@@ -41,7 +41,8 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'viewlet',
 
-    'snippets'
+    'boilerplate',
+    'snippets',
 )
 
 MIDDLEWARE_CLASSES = (
