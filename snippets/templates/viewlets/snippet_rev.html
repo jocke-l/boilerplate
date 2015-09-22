@@ -1,0 +1,11 @@
+<article class="snippet">
+  <header>
+    <h1>{{ snippet }}</h1>
+    <span>
+      <time datetime="{{ snippet.submitted|date:"c" }}">{{ snippet.submitted }}</time>
+    </span>
+  </header>
+  <pre>
+    <code>{{ snippet.code }}</code>
+  </pre>
+</article>

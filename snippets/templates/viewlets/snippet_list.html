@@ -1,0 +1,9 @@
+{% load viewlets %}
+
+<ol class="snippet-list">
+  {% for holder in holders %}
+    <li>
+      {% viewlet snippet_rev holder.latest.id %}
+    </li>
+  {% endfor %}
+</ol>
