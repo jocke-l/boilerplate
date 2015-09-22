@@ -35,6 +35,6 @@ class SnippetTestCase(TestCase):
 
         self.assertEqual(holder.latest, change)
 
-        self.assertEqual(str(snippet), "test - print('Hello, world!')")
+        self.assertEqual(str(snippet), 'test')
 
         self.assertEqual(str(holder), 'test2')

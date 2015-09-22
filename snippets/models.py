@@ -46,4 +46,4 @@ class Snippet(models.Model):
     objects = SnippetManager()
 
     def __str__(self):
-        return '{} - {}'.format(self.name, self.code)
+        return self.name
