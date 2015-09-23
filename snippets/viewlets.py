@@ -1,12 +1,10 @@
 from django.template.loader import render_to_string
 from viewlet import viewlet
-from .models import Snippet, SnippetHolder
+from .models import SnippetHolder
 
 
 @viewlet
-def snippet_rev(context, snippet_id):
-    snippet = Snippet.objects.get(id=snippet_id)
-
+def snippet_rev(context, snippet):
     return render_to_string('viewlets/snippet_rev.html', {'snippet': snippet})
 
 
