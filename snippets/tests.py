@@ -1,6 +1,8 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
+from lxml import html
 from .models import Snippet
+from .viewlets import snippet_list, snippet_rev
 
 
 class SnippetTestCase(TestCase):
@@ -38,3 +40,34 @@ class SnippetTestCase(TestCase):
         self.assertEqual(str(snippet), 'test')
 
         self.assertEqual(str(holder), 'test2')
+
+    def test_snippet_list(self):
+        snippet, holder = Snippet.objects.create_with_holder(
+            contributor=self.user,
+            name='test',
+            description='test description',
+            code="print('Hello, world!')"
+        )
+
+        change = Snippet.objects.create(
+            holder=holder,
+            contributor=self.user,
+            name='test',
+            description='test description',
+            code="print('Changed!')",
+        )
+
+        snippet2, holder2 = Snippet.objects.create_with_holder(
+            contributor=self.user,
+            name='test2',
+            description='test description',
+            code="print('Another world!')"
+        )
+
+        result = snippet_list()
+        tree = html.fromstring(result)
+
+        self.assertEqual(
+            tree.xpath('//code/text()'),
+            ["print('Changed!')", "print('Another world!')"]
+        )
