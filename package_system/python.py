@@ -1,4 +1,5 @@
 import re
+import string
 from os import path, makedirs
 from unicodedata import normalize
 from jinja2 import Environment, PackageLoader
@@ -6,8 +7,8 @@ from jinja2 import Environment, PackageLoader
 env = Environment(loader=PackageLoader(__name__))
 
 
-def to_ascii(string):
-    return ''.join(char for char in string if ord(char) < 128)
+def to_ascii(s):
+    return ''.join(c for c in s if c in string.printable)
 
 
 def friendly(string):
