@@ -6,13 +6,20 @@ from jinja2 import Environment, PackageLoader
 env = Environment(loader=PackageLoader(__name__))
 
 
+def to_ascii(string):
+    return ''.join(char for char in string if ord(char) < 128)
+
+
 def friendly(string):
     parts = re.sub('[^ \w]', '', normalize('NFC', string)).lower().split()
 
-    user_friendly = '-'.join(parts)
-    python_friendly = '_'.join(parts)
+    user_friendly = to_ascii('-'.join(parts))
+    python_friendly = to_ascii('_'.join(parts))
 
-    return user_friendly, python_friendly
+    if user_friendly and python_friendly:
+        return user_friendly, python_friendly
+    else:
+        raise TypeError
 
 
 def make_package_dir(destination_path, version, name):
