@@ -16,10 +16,7 @@ def friendly(string):
     user_friendly = to_ascii('-'.join(parts))
     python_friendly = to_ascii('_'.join(parts))
 
-    if user_friendly and python_friendly:
-        return user_friendly, python_friendly
-    else:
-        raise TypeError
+    return user_friendly, python_friendly
 
 
 def make_package_dir(destination_path, version, name):
