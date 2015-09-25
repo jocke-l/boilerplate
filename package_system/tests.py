@@ -27,3 +27,7 @@ class FriendlyTestCase(unittest.TestCase):
         assume(python_friendly != '')
 
         self.assertNotIn('-', python_friendly)
+
+    def test_friendly_python_dashes_to_underscores(self):
+        _, python_friendly = friendly('arst-star')
+        self.assertEqual(python_friendly, 'arst_star')

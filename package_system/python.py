@@ -11,7 +11,9 @@ def to_ascii(string):
 
 
 def friendly(string):
-    parts = re.sub('[^ \w]', '', normalize('NFC', string)).lower().split()
+    parts = re.sub(
+        '[^ \w]', '', normalize('NFC', string).replace('-', ' ')
+    ).lower().split()
 
     user_friendly = to_ascii('-'.join(parts))
     python_friendly = to_ascii('_'.join(parts))
