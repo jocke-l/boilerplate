@@ -2,7 +2,7 @@ import unittest
 from hypothesis import given, assume
 from hypothesis.strategies import text
 from hypothesis.errors import UnsatisfiedAssumption
-from python import friendly
+from .python import friendly
 
 
 def is_ascii(string):
