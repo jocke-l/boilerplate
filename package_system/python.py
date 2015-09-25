@@ -4,7 +4,9 @@ from os import path, makedirs
 from unicodedata import normalize
 from jinja2 import Environment, PackageLoader
 
-env = Environment(loader=PackageLoader(__name__))
+TEMPLATE_PATH = path.join('templates', 'python')
+
+env = Environment(loader=PackageLoader(__package__, TEMPLATE_PATH))
 
 
 def to_ascii(s):
