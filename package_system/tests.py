@@ -1,11 +1,12 @@
 import unittest
+import string
 from hypothesis import given, assume
 from hypothesis.strategies import text
 from .python import friendly
 
 
-def is_ascii(string):
-    return all(ord(char) < 128 for char in string)
+def is_ascii(s):
+    return all(c in string.printable for c in s)
 
 
 class FriendlyTestCase(unittest.TestCase):
