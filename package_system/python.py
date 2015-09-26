@@ -1,6 +1,7 @@
-import re
 import string
-from os import path, makedirs
+import re
+import os  # Mock doesn't work with direcly imported symbols
+from os import path
 from unicodedata import normalize
 from jinja2 import Environment, PackageLoader
 
@@ -32,7 +33,7 @@ def make_package_dir(destination_path, version, name):
     package_dir = path.join(package_root, package_name_python)
 
     try:
-        makedirs(package_dir)
+        os.makedirs(package_dir)
     except OSError:
         pass
 
@@ -52,3 +53,5 @@ def create_package(destination_path, setup_params, source):
 
     with open(path.join(package_dir, '__init__.py'), 'w') as source_file:
         source_file.write(source)
+
+    return package_root
